@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration status="info">
+    <!-- 属性配置 -->
+    <properties>
+        <property name ="patternLayout" >%d [%t] %-5p [%c] [%L] - %m%n</property>
+        <property name ="LOG_HOME">/export/Logs/task.promise.jd.local</property>
+    </properties>
+
+    <!-- 日志输出器 -->
+    <Appenders>
+        <Console name="ConsoleM" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${patternLayout}"/>
+        </Console>
+    </Appenders>
+
+    <!-- 日志输出 -->
+    <Loggers>
+        <Root level="debug" name="RootLog" includeLocation="true">
+            <AppenderRef ref="ConsoleM"/>
+        </Root>
+    </Loggers>
+</configuration>

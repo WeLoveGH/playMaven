@@ -1,0 +1,220 @@
+如下日志所示，我们可以得到如下信息：
+
+1：当我们把maven的命令的参数搞错的时候，控制台会具体的提示我们一下，每个参数的含义是什么，以及我们错在了哪里，这一点非常的棒
+2：通过命令参数的提示含义，我们能清楚的了解到每一个命令的本质含义
+3：线上最常用的一种名利形式如下所示
+
+clean -U install  -Dmaven.test.skip=true -pl web/web -am
+
+clean:清除之前的构建，避免影响本次的构建结果
+
+-U:强制检查更新依赖，默认以天为单位进行
+
+install:将构建的依赖包，安装到本地仓库
+
+-Dmaven.test.skip=true:编译时跳过测试
+
+-pl:指定需要构建的项目，可以通过项目的相对路径或者依赖标识来指定
+
+-am:同时构建此模块依赖的模块
+
+
+
+
+"C:\Program Files\Java\jdk1.8.0_162\bin\java"
+-Dmaven.multiModuleProjectDirectory=D:\workspace_test\playMaven
+-Dmaven.home=E:\0-system-setting\apache-maven-3.5.0-bin\apache-maven-3.5.0
+-Didea.modules.paths.file=C:\Users\qianyingjie1\.IntelliJIdea2017.2\system\Maven\idea-projects-state-661b3d7d.properties
+-Dclassworlds.conf=C:\Users\qianyingjie1\AppData\Local\Temp\idea-81-mvn.conf "
+
+-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2017.2.2\lib\idea_rt.jar=55725:C:\Program Files\JetBrains\IntelliJ IDEA 2017.2.2\bin"
+-Dfile.encoding=UTF-8
+-classpath E:\0-system-setting\apache-maven-3.5.0-bin\apache-maven-3.5.0\boot\plexus-classworlds-2.5.2.jar org.codehaus.classworlds.Launcher
+-Didea.version=2017.2.2 -s E:\0-system-setting\apache-maven-3.5.0-bin\settings.xml
+-Dmaven.repo.local=E:\0-system-setting\apache-maven-3.5.0-bin\repository
+
+clean -U install -Dmaven.test.skip=true -am -pl -P !dev,-test,product
+
+Unable to parse command line options: Missing argument for option: pl
+
+usage: mvn [options] [<goal(s)>] [<phase(s)>]
+
+Options:
+ -am,--also-make                        If project list is specified, also
+                                        build projects required by the
+                                        list
+ -amd,--also-make-dependents            If project list is specified, also
+                                        build projects that depend on
+                                        projects on the list
+ -B,--batch-mode                        Run in non-interactive (batch)
+                                        mode (disables output color)
+ -b,--builder <arg>                     The id of the build strategy to
+                                        use
+ -C,--strict-checksums                  Fail the build if checksums don't
+                                        match
+ -c,--lax-checksums                     Warn if checksums don't match
+ -cpu,--check-plugin-updates            Ineffective, only kept for
+                                        backward compatibility
+ -D,--define <arg>                      Define a system property
+ -e,--errors                            Produce execution error messages
+ -emp,--encrypt-master-password <arg>   Encrypt master security password
+ -ep,--encrypt-password <arg>           Encrypt server password
+ -f,--file <arg>                        Force the use of an alternate POM
+                                        file (or directory with pom.xml)
+ -fae,--fail-at-end                     Only fail the build afterwards;
+                                        allow all non-impacted builds to
+                                        continue
+ -ff,--fail-fast                        Stop at first failure in
+                                        reactorized builds
+ -fn,--fail-never                       NEVER fail the build, regardless
+                                        of project result
+ -gs,--global-settings <arg>            Alternate path for the global
+                                        settings file
+ -gt,--global-toolchains <arg>          Alternate path for the global
+                                        toolchains file
+ -h,--help                              Display help information
+ -l,--log-file <arg>                    Log file where all build output
+                                        will go (disables output color)
+ -llr,--legacy-local-repository         Use Maven 2 Legacy Local
+                                        Repository behaviour, ie no use of
+                                        _remote.repositories. Can also be
+                                        activated by using
+                                        -Dmaven.legacyLocalRepo=true
+ -N,--non-recursive                     Do not recurse into sub-projects
+ -npr,--no-plugin-registry              Ineffective, only kept for
+                                        backward compatibility
+ -npu,--no-plugin-updates               Ineffective, only kept for
+                                        backward compatibility
+ -nsu,--no-snapshot-updates             Suppress SNAPSHOT updates
+ -o,--offline                           Work offline
+ -P,--activate-profiles <arg>           Comma-delimited list of profiles
+                                        to activate
+ -pl,--projects <arg>                   Comma-delimited list of specified
+                                        reactor projects to build instead
+                                        of all projects. A project can be
+                                        specified by [groupId]:artifactId
+                                        or by its relative path
+ -q,--quiet                             Quiet output - only show errors
+ -rf,--resume-from <arg>                Resume reactor from specified
+                                        project
+ -s,--settings <arg>                    Alternate path for the user
+                                        settings file
+ -t,--toolchains <arg>                  Alternate path for the user
+                                        toolchains file
+ -T,--threads <arg>                     Thread count, for instance 2.0C
+                                        where C is core multiplied
+ -U,--update-snapshots                  Forces a check for missing
+                                        releases and updated snapshots on
+                                        remote repositories
+ -up,--update-plugins                   Ineffective, only kept for
+                                        backward compatibility
+ -v,--version                           Display version information
+ -V,--show-version                      Display version information
+                                        WITHOUT stopping build
+ -X,--debug                             Produce execution debug output
+[ERROR] Error executing Maven.
+org.apache.commons.cli.MissingArgumentException: Missing argument for option: pl
+	at org.apache.commons.cli.Parser.processArgs(Parser.java:363)
+	at org.apache.commons.cli.Parser.processOption(Parser.java:395)
+	at org.apache.commons.cli.Parser.parse(Parser.java:210)
+	at org.apache.commons.cli.Parser.parse(Parser.java:88)
+	at org.apache.maven.cli.CLIManager.parse(CLIManager.java:159)
+	at org.apache.maven.cli.MavenCli.cli(MavenCli.java:463)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:334)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:191)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+	at org.codehaus.classworlds.Launcher.main(Launcher.java:47)
+
+Process finished with exit code 1
+
+
+好玩的maven命令组合
+
+1：clean -U -X
+
+清除所有项目构建的jar
+
+2：clean install -U -X
+
+清除所有项目构建的jar，且重新构建
+
+3：clean install -U -X -pl web/web -am
+
+清除指定项目的构建jar，且重新构建
+
+4：clean install -U -X -pl web/web -am -h
+
+当使用了 -h 之后，此时只有 -h 会生效，其他的参数均不生效，好玩吧！
+
+5：当一个pom.xml文件中配置了某个依赖时，没有 Reimport 时对应的依赖jar，是没有放入到本地工作空间的，当时使用了这个命令时才真正的将对应的jar下载到本地工作空间
+
+6：clean install -U -X -pl web/web -am -V
+
+把依赖的版本显示出来
+
+7：-P 这个命令用于指定编译哪些配置文件，用于隔离环境（开发/测试/线上）
+
+8：-Dmaven.test.failure.ignore=true
+
+忽略失败的单元测试，需要配置 maven-surefire-plugin 插件
+
+9：-Dmaven.test.skip=true
+
+跳过单元测试，需要配置 maven-surefire-plugin 插件
+
+10：help:effective-pom
+
+查看隐藏的 pom.xml 的文件结构，这个命令好玩了，可以看到好多隐藏的内容，让你看到一个真正的生效的 pom.xml 文件的真正的结构
+
+11：clean dependency:list
+
+查看当前项目的依赖列表
+
+12：clean dependency:tree
+
+查看当前项目的依赖树
+
+13：clean dependency:resolve
+
+从新解析项目的依赖
+
+14：clean dependency:analyze
+
+分析当前项目的依赖
+
+15：help:describe -Dplugin=exec -Dfull
+
+列出所有 Maven Exec 插件的可用目标
+
+16：dependency:sources
+
+下载依赖包的源码
+
+
+
+构建多模块项目大概步骤：
+
+1：构建一个maven项目
+
+2：删除掉此项目多余目录，比如：源代码的目录
+
+3：将此项目的根文件夹标记为 Sources Root 目录
+
+4：在此项目中创建子模块
+
+5：一般会分为公共模块、远程接口调用模块、发送MQ模块、定时任务模块、web页面模块、插件模块等
+
+6：公共的依赖放入parent pom.xml文件中
+
+7：公共模块通常可能作为公共jar的形式提供出去，至少这些公共模块是供其他的模块依赖的
+
+8：系统模块规划的好，能够减少很多的重复代码的编写，代码更加的清晰，工作量也更加的少，否则依赖混乱会导致项目维护成本增多
+
+9：
